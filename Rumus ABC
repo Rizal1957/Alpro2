@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Masukkan nilai koefisien x^2 : ");
+        int o = s.nextInt();
+
+        System.out.print("Masukkan nilai koefisien x : ");
+        int p = s.nextInt();
+
+        System.out.print("Masukkan nilai konstanta : ");
+        int q = s.nextInt();
+
+        System.out.println("\nPersamaan: " + o + "x^2 + " + p + "x + " + q + " = 0");
+
+        double a = o;
+        double b = p;
+        double c = q;
+
+        double diskriminan = b * b - 4 * a * c;
+        String hasil;
+      
+        if (diskriminan > 0) {
+            double x1 = (-b + Math.sqrt(diskriminan)) / (2 * a);
+            double x2 = (-b - Math.sqrt(diskriminan)) / (2 * a);
+
+            hasil = "Memiliki akar-akar real yaitu X1 = " + x1 + " dan X2 = " + x2;
+        } else if (diskriminan == 0) {
+            double x = -b / (2 * a);
+    
+            hasil="memiliki akar real X1 = X2 = "+x;
+
+        } else {
+           hasil="tidak memiliki akar real (akar imajiner).";
+        }
+        
+        System.out.println("Maka persamaan kuadrat tersebut "+hasil);
+        s.close();
+    }
+}
