@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Masukkan bilangan pertama: ");
+        int a = s.nextInt();
+
+        System.out.print("Masukkan bilangan kedua: ");
+        int b = s.nextInt();
+
+        int fpb = cariFPB(a, b);
+
+        System.out.println("FPB dari " + a + " dan " + b + " adalah: " + fpb);
+    }
+
+    public static int cariFPB(int a, int b) {
+        while (b != 0) {
+            int sisa = a % b;
+            a = b;
+            b = sisa;
+        }
+        return a;
+    }
+}
