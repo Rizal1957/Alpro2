@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner s=new Scanner (System.in);
+		System.out.print("Masukkan jari jari lingkaran : ");
+		double r=s.nextInt();
+		double luas=Math.PI*r*r;
+		double keliling=Math.PI*2*r;
+		System.out.printf("Luas = %.2f\nKeliling = %.2f\n", luas, keliling);
+	}
+}
