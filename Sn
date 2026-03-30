@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner s=new Scanner(System.in);
+		System.out.print("Anda mau mencari jumlahan berapa suku pertama? ");
+		int n=s.nextInt();
+		int hasil=0;
+		for(int i=1;i<=n;i++){
+		    hasil=hasil+i;
+		}
+		System.out.print("Maka hasil jumlahan "+n+" suku pertama adalah "+hasil);
+	}
+}
