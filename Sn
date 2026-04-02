@@ -3,10 +3,14 @@ public class Main
 {
 	public static void main(String[] args) {
 	    Scanner s=new Scanner(System.in);
-		System.out.print("Anda mau mencari jumlahan berapa suku pertama? ");
+		System.out.print("Anda mau mencari jumlahan berapa suku pertama dalam deret aritmatika? ");
 		int n=s.nextInt();
+		System.out.print("Masukkan nilai suku pertama : ");
+		int a=s.nextInt();
+		System.out.print("Masukkan nilai beda antarsuku : ");
+		int b=s.nextInt();
 		int hasil=0;
-		for(int i=1;i<=n;i++){
+		for(int i=a;i<=a+(n-1)*b;i=i+b){
 		    hasil=hasil+i;
 		}
 		System.out.print("Maka hasil jumlahan "+n+" suku pertama adalah "+hasil);
