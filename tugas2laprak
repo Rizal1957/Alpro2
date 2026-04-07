@@ -1,25 +1,47 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 public class Main
 {
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
-		System.out.println("Anda ingin mencari bilangan berapa dari array yang saya miliki?")
+		System.out.println("Anda ingin mencari bilangan berapa dari array yang saya miliki?");
 		int n=s.nextInt();
 		
 		int[]data=new int[100];
-		
-		int [] sudah_urut=new int[data.length];
-		sudah_urut=data;
+		data[0]=19;
+		data[1]=4;
+		for(int i=2;i<data.length;i++){
+		    if(i%2==0){
+		        data[i]=2*i;
+		    }else if(i%3==0){
+		        data[i]=3*i;
+		    }else if(i%5==0){
+		        data[i]=i/5;
+		    }else data[i]=i;
+		}
 		
 		int[]index=new int[data.length];
-		for(int i=0;i<data.length;i++){
-		    System.out.print(data[i]+" ");
-		}
-		
-		for(int i=0;i<sudah_urut.length;i++){
-		    System.out.println(sudah_urut[i]+" ");
-		}
-		
-		
+		System.out.println(" ");
+		System.out.println("Belum urut : ");
+		System.out.println(Arrays.toString(data))
+		bubblesort(data);
+		System.out.println(" ");
+		System.out.println("Sudah urut : ");
+		System.out.println(Arrays.toString(data))
+	}
+	
+	static void bubblesort(int[]arr){
+	    int n=arr.length;
+	    int temp=0;
+	    
+	    for(int i=0;i<n-1;i++){
+	        for(int j=0;j<n-i-1;j++){
+	            if(arr[j]>arr[j+1]){
+	                temp=arr[j];
+	                arr[j]=arr[j+1];
+	                arr[j+1]=temp;
+	            }
+	        }
+	    }
 	}
 }
