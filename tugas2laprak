@@ -28,17 +28,17 @@ public class Main {
         int target = s.nextInt();
         
         int []index1=new int[data.length];
-        int index1 = binarySearch(data, target);
+        int []index1 = binarySearch(data, target);
         if (index1 != -1) {
-            System.out.println("\nTarget ditemukan dengan binary search pada data awal, index: " + index1);
+            System.out.println("\nTarget ditemukan dengan binary search pada data awal, index: " + Arrays.toString(index1));
         } else {
             System.out.println("\nTarget tidak ditemukan dengan binary search");
         }
         
         int []index2=new int[data.length];
-        int index2 = linearSearch(data, target);
+        int []index2 = linearSearch(data, target);
         if (index2 != -1) {
-            System.out.println("\nTarget ditemukan dengan linear search pada data awal, index: " + index2);
+            System.out.println("\nTarget ditemukan dengan linear search pada data awal, index: " + Arrays.toString(index2));
         } else {
             System.out.println("\nTarget tidak ditemukan dengan linear search");
         }
@@ -50,18 +50,18 @@ public class Main {
         System.out.println(Arrays.toString(data));
 
         int []index3=new int[data.length];
-        int index3 = binarySearch(data, target);
+        int []index3 = binarySearch(data, target);
         if (index3 != -1) {
-            System.out.println("\nTarget ditemukan dengan binary search, index: " + index3);
+            System.out.println("\nTarget ditemukan dengan binary search, index: " + Arrays.toString(index3));
         } else {
             System.out.println("\nTarget tidak ditemukan dengan binary search");
         }
 
 
         int []index4=new int[data.length];
-        int index4 = linearSearch(data, target);
+        int []index4 = linearSearch(data, target);
         if (index4 != -1) {
-            System.out.println("\nTarget ditemukan dengan linear search, index: " + index4);
+            System.out.println("\nTarget ditemukan dengan linear search, index: " + Arrays.toString(index4));
         } else {
             System.out.println("\nTarget tidak ditemukan dengan linear search");
         }
@@ -82,7 +82,7 @@ public class Main {
         }
     }
 
-    static int binarySearch(int[] arr, int target) {
+    static int []binarySearch(int[] arr, int target) {
         int low = 0;
         int high = arr.length - 1;
 
@@ -100,10 +100,13 @@ public class Main {
         return -1;
     }
 
-    static int linearSearch(int[] arr, int target) {
+    static int []linearSearch(int[] arr, int target) {
+        int []index=new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == target) {
-                return i;
+                for(int j=0;j<arr.length;j++){
+                    index[j]=i;
+                }
             }
         }
         return -1;
