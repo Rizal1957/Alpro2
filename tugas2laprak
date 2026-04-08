@@ -20,7 +20,6 @@ public class Main
 		    }else data[i]=i;
 		}
 		
-		int[]index=new int[data.length];
 		System.out.println(" ");
 		System.out.println("Belum urut : ");
 		System.out.println(Arrays.toString(data))
@@ -44,4 +43,38 @@ public class Main
 	        }
 	    }
 	}
+	
+	 int index1=binersearch(numbers,target);
+    if(index!=-1){
+        System.out.println("Target ditemukan dengan binary search, index : "+index1);
+    }else System.out.println("Target tidak ditemukan dengan binary search//");
+    static int binersearch(int [] n,int t){
+      int low=0;
+      int high=n.length-1;
+      
+      while(low<=high){
+          int mid=(low+high)/2;
+          
+          if(n[mid]==t){
+              return mid;
+          }else if(n[mid]<t){
+              low=mid+1;
+          }else high=mid-1;
+      }
+      return -1;
+  }
+  
+   int index2=linearsearch(numbers,target);
+    if(index!=-1){
+        System.out.println("Target ditemukan, index : "+index2);
+    }else System.out.println("Target tidak ditemukan dengan linear search//");
+    
+    static int linearsearch(int [] n,int t){
+      for(int i=0;i<n.length;i++){
+          if(n[i]==t){
+              return i;
+          }
+      }
+      return -1;
+}
 }
