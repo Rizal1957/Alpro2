@@ -1,11 +1,11 @@
-public class Main {
-  public static void main(String[] args) {
+class Main {
+   public static void main(String[] args) {
     int [] numbers={1,3,5,7,9};
     int target=7;
     
     int index=search(numbers,target);
     if(index!=-1){
-        System.out.println("Target ditemukan : "+index);
+        System.out.println("Target ditemukan, index : "+index);
     }else System.out.println("Target tidak ditemukan//");
   }
   
@@ -17,7 +17,7 @@ public class Main {
           int mid=(low+high)/2;
           
           if(n[mid]==t){
-              return mid
+              return mid;
           }else if(n[mid]<t){
               low=mid+1;
           }else high=mid-1;
