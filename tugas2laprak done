@@ -1,0 +1,131 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        int[] data = new int[100];
+        data[0] = 19;
+        data[1] = 4;
+
+        for (int i = 2; i < data.length; i++) {
+            if (i % 2 == 0) {
+                data[i] = 2 * i;
+            } else if (i % 3 == 0) {
+                data[i] = 3 * i;
+            } else if (i % 5 == 0) {
+                data[i] = i / 5;
+            } else {
+                data[i] = i;
+            }
+        }
+
+        System.out.println("\nData awal:");
+        System.out.println(Arrays.toString(data));
+
+        System.out.print("\nMasukkan nilai yang ingin dicari: ");
+        int target = s.nextInt();
+
+        int[] index1 = linearsearch(data, target);
+        tampilkan("Linear Search (data awal)", index1);
+
+        int[] index2 = binarysearch(data, target);
+        tampilkan("Binary Search (data awal)", index2);
+
+        bubbleSort(data);
+
+        System.out.println("\nData setelah diurutkan:");
+        System.out.println(Arrays.toString(data));
+
+        int[] index3 = binarysearch(data, target);
+        tampilkan("Binary Search (data urut)", index3);
+
+        int[] index4 = linearsearch(data, target);
+        tampilkan("Linear Search (data urut)", index4);
+    }
+
+    static void tampilkan(String metode, int[] index) {
+        if (index.length == 0) {
+            System.out.println(metode + " → tidak ditemukan");
+        } else {
+            System.out.println(metode + " → ditemukan di index: " + Arrays.toString(index));
+        }
+    }
+
+    static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        int temp;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    static int[] linearsearch(int[] arr, int target) {
+        int[] temp = new int[arr.length];
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                temp[count] = i;
+                count++;
+            }
+        }
+
+        int[] hasil = new int[count];
+        for (int i = 0; i < count; i++) {
+            hasil[i] = temp[i]+1;
+        }
+
+        return hasil;
+    }
+
+    static int[] binarysearch(int[] arr, int target) {
+        int low = 0, high = arr.length - 1;
+        int found = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] == target) {
+                found = mid;
+                break;
+            } else if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        if (found == -1) return new int[0];
+
+        int[] temp = new int[arr.length];
+        int count = 0;
+
+        int i = found;
+        while (i >= 0 && arr[i] == target) {
+            i--;
+        }
+        i++;
+
+        while (i < arr.length && arr[i] == target) {
+            temp[count] = i;
+            count++;
+            i++;
+        }
+
+        int[] hasil = new int[count];
+        for (int j = 0; j < count; j++) {
+            hasil[j] = temp[j]+1;
+        }
+
+        return hasil;
+    }
+}
