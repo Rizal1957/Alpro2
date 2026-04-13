@@ -1,0 +1,23 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int [] data={1,4,2,0,9,10};
+		selectsorting(data);
+		System.out.println("Maka data yang sudah diurutkan adalah :"+Arrays.toString(data));
+	}
+	
+	public static void selectsorting(int []arr){
+	    for(int i=0;i<arr.length-1;i++){
+	        int minidx=i;
+	        for(int j=i+1;j<arr.length-1;j++){
+	            if(arr[j]<arr[minidx]){
+	                minidx=j;
+	            }
+	        }
+	        int temp=arr[i];
+	        arr[i]=arr[minidx];
+	        arr[minidx]=temp;
+	    }
+	}
+}
