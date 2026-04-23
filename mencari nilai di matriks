@@ -1,0 +1,44 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Masukkan angka yang ingin anda cari: ");
+        int x = s.nextInt();
+
+        int m = 3;
+        int n = 2;
+        int[][] data = new int[m][n];
+
+        // Mengisi matriks
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                data[i][j] = i * j;
+            }
+        }
+
+        System.out.println("Isi matriks: " + Arrays.deepToString(data));
+
+        boolean ditemukan = false;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (data[i][j] == x) {
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (ditemukan) break;
+        }
+
+        if (ditemukan) {
+            System.out.println("Nilai " + x + " ditemukan di dalam matriks");
+        } else {
+            System.out.println("Nilai " + x + " tidak ditemukan di dalam matriks");
+        }
+
+        s.close();
+    }
+}
