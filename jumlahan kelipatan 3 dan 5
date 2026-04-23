@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner (System.in);
+		int hasil=0;
+		int hitung=0;
+		System.out.print("Masukkan nilai n : ");
+		int n=s.nextInt();
+		for(int i=0;i<=n;i++){
+		    if(i%3==0&&i%5==0){
+		        continue;
+		    }else if(i%3==0||i%5==0){
+		        hasil+=i;
+		        hitung++;
+		    }
+		}
+		System.out.println("Maka hasil jumlahan bilangan 1 hingga "+n+" yang merupakan kelipatan 3 atau 5 adalah "+hasil);
+		System.out.println("Maka rata-rata dari kumpulan bilangan berikut adalah : "+hasil/hitung);
+	}
+}
