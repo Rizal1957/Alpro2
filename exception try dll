@@ -1,0 +1,17 @@
+public class Main
+{
+	public static void main(String[] args) {
+		try{
+		    int[]data=new int[3];
+		    data[1]=5;
+		    data[3]=3;
+		    System.out.println("Data tersimpan.");
+		}catch(ArithmeticException e){
+		    System.out.println(" kesalahan operasi terdeteksi.");
+		}catch(ArrayIndexOutOfBoundsException e){
+		    System.out.println("Kondisi array tidak valid.");
+		}finally{
+		    System.out.println("program keluar dari try-catch");
+		}
+	}
+}
