@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // "Test" bukanlah angka
+            int n = Integer.parseInt("Test");
+            System.out.println(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Pengecualian format angka");
+        }
+    }
+}
+___________________________________________________________
