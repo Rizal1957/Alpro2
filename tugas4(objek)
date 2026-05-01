@@ -1,0 +1,46 @@
+class Kendaraan {
+    String merk;
+    String warna;
+    int kecepatan;
+
+    Kendaraan(String merk, String warna) {
+        this.merk = merk;
+        this.warna = warna;
+        this.kecepatan = 0; 
+    }
+
+    void gas(int tambahKecepatan) {
+        kecepatan += tambahKecepatan;
+        System.out.println(merk + " dipercepat " + tambahKecepatan + " km/jam.");
+    }
+
+    void rem(int kurangKecepatan) {
+        kecepatan -= kurangKecepatan;
+        if (kecepatan < 0) kecepatan = 0;
+        System.out.println(merk + " direm " + kurangKecepatan + " km/jam.");
+    }
+
+    void tampilStatus() {
+        System.out.println("Merk: " + merk);
+        System.out.println("Warna: " + warna);
+        System.out.println("Kecepatan: " + kecepatan + " km/jam");
+        System.out.println("-----------------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Membuat 2 objek kendaraan
+        Kendaraan mobil = new Kendaraan("Toyota", "Hitam");
+        Kendaraan motor = new Kendaraan("Honda", "Merah");
+
+        mobil.tampilStatus();
+        mobil.gas(40);
+        mobil.tampilStatus();
+
+        motor.tampilStatus();
+        motor.gas(60);
+        motor.rem(20);
+        motor.tampilStatus();
+    }
+}
