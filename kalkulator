@@ -1,0 +1,182 @@
+import java.util.Scanner;
+
+class OperasiDasar {
+
+    protected double hasil;
+
+    public OperasiDasar(double hasil) {
+        this.hasil = hasil;
+    }
+
+    public void tambah(double angka) {
+        hasil += angka;
+    }
+
+    public void kurang(double angka) {
+        hasil -= angka;
+    }
+
+    public void kali(double angka) {
+        hasil *= angka;
+    }
+
+    public void bagi(double angka) {
+        if (angka != 0) {
+            hasil /= angka;
+        } else {
+            System.out.println("Tidak bisa dibagi 0");
+        }
+    }
+
+    public double getHasil() {
+        return hasil;
+    }
+}
+
+class Scientific extends OperasiDasar {
+
+    public Scientific(double hasil) {
+        super(hasil);
+    }
+
+    public void pangkat(double angka) {
+        hasil = Math.pow(hasil, angka);
+    }
+
+    public void akar() {
+        hasil = Math.sqrt(hasil);
+    }
+
+    public void sin() {
+        hasil = Math.sin(Math.toRadians(hasil));
+    }
+
+    public void cos() {
+        hasil = Math.cos(Math.toRadians(hasil));
+    }
+
+    public void tan() {
+        hasil = Math.tan(Math.toRadians(hasil));
+    }
+
+    public void arcsin() {
+        hasil = Math.toDegrees(Math.asin(hasil));
+    }
+
+    public void arccos() {
+        hasil = Math.toDegrees(Math.acos(hasil));
+    }
+
+    public void arctan() {
+        hasil = Math.toDegrees(Math.atan(hasil));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan angka awal: ");
+        double awal = input.nextDouble();
+
+        Scientific kalkulator = new Scientific(awal);
+
+        int pilihan;
+        double angka;
+
+        do {
+
+            System.out.println("\n=== KALKULATOR SCIENTIFIC ===");
+            System.out.println("Hasil saat ini = " + kalkulator.getHasil());
+
+            System.out.println("1. Tambah");
+            System.out.println("2. Kurang");
+            System.out.println("3. Kali");
+            System.out.println("4. Bagi");
+            System.out.println("5. Pangkat");
+            System.out.println("6. Akar");
+            System.out.println("7. Sin");
+            System.out.println("8. Cos");
+            System.out.println("9. Tan");
+            System.out.println("10. ArcSin");
+            System.out.println("11. ArcCos");
+            System.out.println("12. ArcTan");
+            System.out.println("0. Keluar");
+
+            System.out.print("Pilih operasi: ");
+            pilihan = input.nextInt();
+
+            switch (pilihan) {
+
+                case 1:
+                    System.out.print("Tambah dengan: ");
+                    angka = input.nextDouble();
+                    kalkulator.tambah(angka);
+                    break;
+
+                case 2:
+                    System.out.print("Kurang dengan: ");
+                    angka = input.nextDouble();
+                    kalkulator.kurang(angka);
+                    break;
+
+                case 3:
+                    System.out.print("Kali dengan: ");
+                    angka = input.nextDouble();
+                    kalkulator.kali(angka);
+                    break;
+
+                case 4:
+                    System.out.print("Bagi dengan: ");
+                    angka = input.nextDouble();
+                    kalkulator.bagi(angka);
+                    break;
+
+                case 5:
+                    System.out.print("Pangkat: ");
+                    angka = input.nextDouble();
+                    kalkulator.pangkat(angka);
+                    break;
+
+                case 6:
+                    kalkulator.akar();
+                    break;
+
+                case 7:
+                    kalkulator.sin();
+                    break;
+
+                case 8:
+                    kalkulator.cos();
+                    break;
+
+                case 9:
+                    kalkulator.tan();
+                    break;
+
+                case 10:
+                    kalkulator.arcsin();
+                    break;
+
+                case 11:
+                    kalkulator.arccos();
+                    break;
+
+                case 12:
+                    kalkulator.arctan();
+                    break;
+
+                case 0:
+                    System.out.println("Program selesai");
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak tersedia");
+            }
+
+        } while (pilihan != 0);
+
+        input.close();
+    }
+}
