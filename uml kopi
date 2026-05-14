@@ -1,0 +1,80 @@
+interface Disajikan {
+    void sajikan();
+}
+
+class Kopi {
+    protected String nama;
+    protected int harga;
+
+    public Kopi(String nama, int harga) {
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public int getHarga() {
+        return harga;
+    }
+
+    public void pilih() {
+        System.out.println("Pilih kopi : " + nama);
+    }
+}
+
+class KopiSusu extends Kopi implements Disajikan {
+    private int levelGula;
+
+    public KopiSusu(String nama, int harga, int levelGula) {
+        super(nama, harga);
+        this.levelGula = levelGula;
+    }
+
+    @Override
+    public void pilih() {
+        System.out.println("Nama Kopi : " + nama);
+        System.out.println("Harga : Rp" + harga);
+        System.out.println("Level Gula : " + levelGula);
+    }
+
+    @Override
+    public void sajikan() {
+        System.out.println("Kopi Susu manis disajikan");
+    }
+}
+
+class KopiHitam extends Kopi implements Disajikan {
+    private int levelPahit;
+
+    public KopiHitam(String nama, int harga, int levelPahit) {
+        super(nama, harga);
+        this.levelPahit = levelPahit;
+    }
+
+    @Override
+    public void pilih() {
+        System.out.println("Nama Kopi : " + nama);
+        System.out.println("Harga : Rp" + harga);
+        System.out.println("Level Pahit : " + levelPahit);
+    }
+
+    @Override
+    public void sajikan() {
+        System.out.println("Kopi Hitam pahit disajikan");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        KopiSusu ks = new KopiSusu("Latte", 18000, 3);
+
+        KopiHitam kh = new KopiHitam("Americano", 15000, 5);
+
+        ks.pilih();
+        ks.sajikan();
+
+        System.out.println();
+
+        kh.pilih();
+        kh.sajikan();
+    }
+}
