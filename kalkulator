@@ -1,182 +1,205 @@
 import java.util.Scanner;
 
-class OperasiDasar {
+class Button {
 
-    protected double hasil;
-
-    public OperasiDasar(double hasil) {
-        this.hasil = hasil;
+    void display(double hasil) {
+        System.out.println("Hasil = " + hasil);
     }
 
-    public void tambah(double angka) {
-        hasil += angka;
-    }
+    int prioritas(String op) {
 
-    public void kurang(double angka) {
-        hasil -= angka;
-    }
+        switch (op) {
 
-    public void kali(double angka) {
-        hasil *= angka;
-    }
+            case "+":
+            case "-":
+                return 1;
 
-    public void bagi(double angka) {
-        if (angka != 0) {
-            hasil /= angka;
-        } else {
-            System.out.println("Tidak bisa dibagi 0");
+            case "*":
+            case "/":
+                return 2;
+
+            case "^":
+                return 3;
         }
+
+        return 0;
     }
 
-    public double getHasil() {
+    long faktorial(int n) {
+
+        long hasil = 1;
+
+        for (int i = 1; i <= n; i++) {
+            hasil *= i;
+        }
+
         return hasil;
     }
-}
 
-class Scientific extends OperasiDasar {
+    double operasi(double a, double b, String op) {
 
-    public Scientific(double hasil) {
-        super(hasil);
+        switch (op) {
+
+            case "+":
+                return a + b;
+
+            case "-":
+                return a - b;
+
+            case "*":
+                return a * b;
+
+            case "/":
+                return a / b;
+
+            case "^":
+                return Math.pow(a, b);
+
+            case "C":
+                return faktorial((int)a) /
+                      (faktorial((int)b) *
+                       faktorial((int)(a - b)));
+
+            case "P":
+                return faktorial((int)a) /
+                       faktorial((int)(a - b));
+        }
+
+        return 0;
     }
 
-    public void pangkat(double angka) {
-        hasil = Math.pow(hasil, angka);
-    }
+    double scientific(double a, String op) {
 
-    public void akar() {
-        hasil = Math.sqrt(hasil);
-    }
+        switch (op) {
 
-    public void sin() {
-        hasil = Math.sin(Math.toRadians(hasil));
-    }
+            case "sin":
+                return Math.sin(Math.toRadians(a));
 
-    public void cos() {
-        hasil = Math.cos(Math.toRadians(hasil));
-    }
+            case "cos":
+                return Math.cos(Math.toRadians(a));
 
-    public void tan() {
-        hasil = Math.tan(Math.toRadians(hasil));
-    }
+            case "tan":
+                return Math.tan(Math.toRadians(a));
 
-    public void arcsin() {
-        hasil = Math.toDegrees(Math.asin(hasil));
-    }
+            case "asin":
+                return Math.toDegrees(Math.asin(a));
 
-    public void arccos() {
-        hasil = Math.toDegrees(Math.acos(hasil));
-    }
+            case "acos":
+                return Math.toDegrees(Math.acos(a));
 
-    public void arctan() {
-        hasil = Math.toDegrees(Math.atan(hasil));
+            case "atan":
+                return Math.toDegrees(Math.atan(a));
+
+            case "log":
+                return Math.log10(a);
+        }
+
+        return a;
     }
 }
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Masukkan angka awal: ");
-        double awal = input.nextDouble();
+        Button tombol = new Button();
 
-        Scientific kalkulator = new Scientific(awal);
+        double[] angka = new double[100];
+        String[] operator = new String[100];
 
-        int pilihan;
-        double angka;
+        int jumlahAngka = 0;
+        int jumlahOperator = 0;
 
-        do {
+        System.out.println("=== KALKULATOR SCIENTIFIC ===");
 
-            System.out.println("\n=== KALKULATOR SCIENTIFIC ===");
-            System.out.println("Hasil saat ini = " + kalkulator.getHasil());
+        System.out.print("Masukkan angka awal : ");
+        angka[jumlahAngka++] = input.nextDouble();
 
-            System.out.println("1. Tambah");
-            System.out.println("2. Kurang");
-            System.out.println("3. Kali");
-            System.out.println("4. Bagi");
-            System.out.println("5. Pangkat");
-            System.out.println("6. Akar");
-            System.out.println("7. Sin");
-            System.out.println("8. Cos");
-            System.out.println("9. Tan");
-            System.out.println("10. ArcSin");
-            System.out.println("11. ArcCos");
-            System.out.println("12. ArcTan");
-            System.out.println("0. Keluar");
+        while (true) {
 
-            System.out.print("Pilih operasi: ");
-            pilihan = input.nextInt();
+            System.out.print("Masukkan operator : ");
+            String op = input.next();
 
-            switch (pilihan) {
-
-                case 1:
-                    System.out.print("Tambah dengan: ");
-                    angka = input.nextDouble();
-                    kalkulator.tambah(angka);
-                    break;
-
-                case 2:
-                    System.out.print("Kurang dengan: ");
-                    angka = input.nextDouble();
-                    kalkulator.kurang(angka);
-                    break;
-
-                case 3:
-                    System.out.print("Kali dengan: ");
-                    angka = input.nextDouble();
-                    kalkulator.kali(angka);
-                    break;
-
-                case 4:
-                    System.out.print("Bagi dengan: ");
-                    angka = input.nextDouble();
-                    kalkulator.bagi(angka);
-                    break;
-
-                case 5:
-                    System.out.print("Pangkat: ");
-                    angka = input.nextDouble();
-                    kalkulator.pangkat(angka);
-                    break;
-
-                case 6:
-                    kalkulator.akar();
-                    break;
-
-                case 7:
-                    kalkulator.sin();
-                    break;
-
-                case 8:
-                    kalkulator.cos();
-                    break;
-
-                case 9:
-                    kalkulator.tan();
-                    break;
-
-                case 10:
-                    kalkulator.arcsin();
-                    break;
-
-                case 11:
-                    kalkulator.arccos();
-                    break;
-
-                case 12:
-                    kalkulator.arctan();
-                    break;
-
-                case 0:
-                    System.out.println("Program selesai");
-                    break;
-
-                default:
-                    System.out.println("Pilihan tidak tersedia");
+            if (op.equals("=")) {
+                break;
             }
 
-        } while (pilihan != 0);
+            if (op.equals("sin") ||
+                op.equals("cos") ||
+                op.equals("tan") ||
+                op.equals("asin") ||
+                op.equals("acos") ||
+                op.equals("atan") ||
+                op.equals("log")) {
 
-        input.close();
+                angka[jumlahAngka - 1] =
+                    tombol.scientific(
+                        angka[jumlahAngka - 1],
+                        op
+                    );
+
+                continue;
+            }
+
+            operator[jumlahOperator++] = op;
+
+            System.out.print("Masukkan angka : ");
+            angka[jumlahAngka++] = input.nextDouble();
+        }
+
+        for (int i = 0; i < jumlahOperator; i++) {
+
+            if (operator[i].equals("^") ||
+                operator[i].equals("*") ||
+                operator[i].equals("/")) {
+
+                angka[i] = tombol.operasi(
+                    angka[i],
+                    angka[i + 1],
+                    operator[i]
+                );
+
+                for (int j = i + 1; j < jumlahAngka - 1; j++) {
+                    angka[j] = angka[j + 1];
+                }
+
+                for (int j = i; j < jumlahOperator - 1; j++) {
+                    operator[j] = operator[j + 1];
+                }
+
+                jumlahAngka--;
+                jumlahOperator--;
+
+                i--;
+            }
+        }
+
+        for (int i = 0; i < jumlahOperator; i++) {
+
+            angka[i] = tombol.operasi(
+                angka[i],
+                angka[i + 1],
+                operator[i]
+            );
+
+            for (int j = i + 1; j < jumlahAngka - 1; j++) {
+                angka[j] = angka[j + 1];
+            }
+
+            for (int j = i; j < jumlahOperator - 1; j++) {
+                operator[j] = operator[j + 1];
+            }
+
+            jumlahAngka--;
+            jumlahOperator--;
+
+            i--;
+        }
+
+        tombol.display(angka[0]);
+
+        System.out.println("Program selesai");
     }
 }
